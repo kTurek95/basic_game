@@ -1,39 +1,34 @@
-class User:
-    def __init__(self, username: str, hp: int):
-        self.username = username
-        self.hp = hp
-        self.level = 0
-        self.kills = 0
-
-    def count_kills(self):
-        return self.kills + 1
-
-    def upgrade_level(self):
-        if 0 < self.kills < 5:
-            self.level = 1
-        elif 5 < self.kills < 10:
-            self.level = 2
-        else:
-            self.level = 3
+from alien import Alien
+from user import User
+from board import Board
 
 
-class Alien:
-    def __init__(self, level: int, hp: int):
-        self.level = level
-        self.hp = hp
+def main():
+    user1 = User('JanKowal', 100)
+    user2 = User('AndyWron', 100)
+
+    board = Board()
+
+    user1.set_user_position([0, 0])
+    user2.set_user_position([0, 0])
+
+    alien1 = Alien(1, 100)
+    alien2 = Alien(2, 200)
+    alien3 = Alien(3, 300)
+
+    alien1.set_alien_position((2, 4))
+    alien2.set_alien_position((4, 5))
+    alien3.set_alien_position((8, 1))
+
+    user1.user_move([3, 2])
+    user2.user_move([4, 9])
+
+    print(f'{user1.username} is in position {user1.user_position}')
+    print(f'{user2.username} is in position {user2.user_position}')
 
 
-class Board:
-    def __init__(self, size: int, x_position: int, y_position: int):
-        self.size = size
-
-    def alien_position(self):
-        pass
-
-    def user_position(self):
-        pass
+if __name__ == '__main__':
+    main()
 
 
-alien = Alien(5, 100)
-user = User('Kacperinho', 100)
 
